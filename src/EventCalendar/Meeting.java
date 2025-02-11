@@ -7,6 +7,7 @@ import java.util.Date;
 public class Meeting extends Event implements Completable{
     private String location;            //Private string to track the location of the meeting
     private LocalDateTime endDateTime;  //Private variable to track when the meeting is going to end
+    private boolean complete;
 
 
     public Meeting(String name, LocalDateTime dateTime) {   //Constructor for the meeting
@@ -35,11 +36,11 @@ public class Meeting extends Event implements Completable{
 
     @Override
     public void complete() {
-
+        complete = true;
     }
 
     @Override
     public boolean isCompleted() {
-        return false;
+        return complete;
     }
 }
