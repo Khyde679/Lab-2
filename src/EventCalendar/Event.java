@@ -6,7 +6,7 @@ abstract class Event implements Comparable<Event> {
     private String name;                //Private variable for the name of the event
     private LocalDateTime dateTime;     //Private variable for the date and time of the event
 
-    public Event(String name, LocalDateTime dateTime) {}       //Constructor for the event
+    public Event(String name, LocalDateTime dateTime) {}                    //Constructor for the event
 
     String getName() {      //Getter for the event, returns its name
         return name;
@@ -24,7 +24,8 @@ abstract class Event implements Comparable<Event> {
         this.dateTime = dateTime;
     }
 
-    int compareTo(Event e) {                    //Compares the date of the current event to an incoming one, returns a
+    @Override
+    public int compareTo(Event e) {                    //Compares the date of the current event to an incoming one, returns a
         return dateTime.compareTo(e.dateTime);  //positive int if its later, negative if sooner, 0 if simultaneous
     }
 }

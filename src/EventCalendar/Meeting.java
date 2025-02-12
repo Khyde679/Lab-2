@@ -5,21 +5,27 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Meeting extends Event implements Completable{
+    private String name;
     private String location;            //Private string to track the location of the meeting
+    private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;  //Private variable to track when the meeting is going to end
     private boolean complete;
 
-
-    public Meeting(String name, LocalDateTime dateTime) {   //Constructor for the meeting
-        super(name, dateTime);
+    public Meeting(String name, LocalDateTime startDateTime, LocalDateTime endDateTime, String location) {
+        super(name, startDateTime);
+        this.name = name;
+        this.location = "";
+        this.startDateTime = startDateTime;
+        this.endDateTime = endDateTime;
     }
+
 
     LocalDateTime getEndDateTime() {        //Getter for the end of the meeting
         return endDateTime;
     }
 
-    Duration getDuration() {                            //Getter for the duration of the meeting, calculated by subtracting the
-        return (Duration) (dateTime - endDateTime);     //current time (start time) from the end time of the meeting
+    Duration getDuration() {                                 //Getter for the duration of the meeting, calculated by subtracting the
+        return (Duration) (startDateTime - endDateTime);     //current time (start time) from the end time of the meeting
     }
 
     String getLocation() {      //Getter for the location of the meeting
