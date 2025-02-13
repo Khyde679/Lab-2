@@ -6,7 +6,10 @@ abstract class Event implements Comparable<Event> {
     private String name;                //Private variable for the name of the event
     private LocalDateTime dateTime;     //Private variable for the date and time of the event
 
-    public Event(String name, LocalDateTime dateTime) {}                    //Constructor for the event
+    public Event(String name, LocalDateTime dateTime) {     //Constructor for the event
+        this.name = name;
+        this.dateTime = dateTime;
+    }
 
     String getName() {      //Getter for the event, returns its name
         return name;

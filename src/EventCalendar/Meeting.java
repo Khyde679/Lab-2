@@ -13,7 +13,8 @@ public class Meeting extends Event implements Completable{
 
     public Meeting(String name, LocalDateTime startDateTime, LocalDateTime endDateTime, String location) {
         super(name, startDateTime);
-        this.location = "";
+        this.startDateTime = startDateTime;
+        this.location = location;
         this.endDateTime = endDateTime;
     }
 
