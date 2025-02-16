@@ -17,4 +17,10 @@ public class EventPanel extends JPanel {
         completeButton.addActionListener(new InputListener());
 
     }
+
+    private class InputListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    }
 }
