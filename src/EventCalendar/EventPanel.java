@@ -4,23 +4,25 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 
 public class EventPanel extends JPanel {
     private Event event;
+    private JLabel eventLabel;
     private JButton completeButton;
 
     EventPanel() {
-        completeButton = new JButton("Complete");
+        eventLabel = new JLabel();
+        this.setBackground(Color.GREEN);
+        this.setPreferredSize(new Dimension(400, 400));
 
-        this.setBackground(Color.GRAY);
-        completeButton.setBackground(Color.LIGHT_GRAY);
-        completeButton.addActionListener(new InputListener());
 
-    }
 
-    private class InputListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
+        System.out.println(event.getName());
+        System.out.println(event.getDateTime());
 
-        }
+        this.add(eventLabel);
+
+
     }
 }
