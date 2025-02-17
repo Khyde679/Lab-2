@@ -11,7 +11,7 @@ public class EventPanel extends JPanel {
     private JLabel eventLabel;
     private JButton completeButton;
 
-    EventPanel() {
+    EventPanel() {          //Constructor for the EventPanel
         eventLabel = new JLabel();
         this.setBackground(Color.GREEN);
         this.setPreferredSize(new Dimension(400, 400));

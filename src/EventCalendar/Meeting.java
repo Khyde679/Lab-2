@@ -40,12 +40,12 @@ public class Meeting extends Event implements Completable{
     }
 
     @Override
-    public void complete() {
+    public void complete() {        //Completes events
         complete = true;
     }
 
     @Override
-    public boolean isComplete() {
+    public boolean isComplete() {       //Checks if events are complete
         return complete;
     }
 }

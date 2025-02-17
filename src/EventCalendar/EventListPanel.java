@@ -13,7 +13,7 @@ public class EventListPanel extends JPanel {
     JCheckBox filterDisplay;
     JButton addEventButton;
 
-    EventListPanel() {
+    EventListPanel() {          //Constructor for the EventListPanel
         events = new ArrayList<>();
         displayPanel = new JPanel();
         controlPanel = new JPanel();
