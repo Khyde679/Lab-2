@@ -2,26 +2,27 @@ package EventCalendar;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.time.LocalDateTime;
 
 public class EventPanel extends JPanel {
-    private Event event;
+    Event event;
     private JLabel eventLabel;
     private JButton completeButton;
 
-    EventPanel() {          //Constructor for the EventPanel
-        eventLabel = new JLabel();
+    EventPanel(Event event) {          //Constructor for the EventPanel
+        this.event = event;
+        eventLabel = new JLabel("Event: " + event.getName() + " " + event.getDateTime());
+        eventLabel.setFont(new Font("Serif", Font.BOLD, 14));
+
+        completeButton = new JButton("Complete");           //Builds the complete button
+        //completeButton.addActionListener(e -> {
+         //   event.complete();
+       // });
+
         this.setBackground(Color.GREEN);
         this.setPreferredSize(new Dimension(400, 400));
 
-
-
-        System.out.println(event.getName());
-        System.out.println(event.getDateTime());
-
         this.add(eventLabel);
+        this.add(completeButton);
 
 
     }
