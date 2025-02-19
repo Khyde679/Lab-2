@@ -12,12 +12,14 @@ public class EventPlanner {
         frame.pack();
         frame.setVisible(true);
 
+        addDefaultEvents(panel);
+
         frame.add(panel);
     }
 
     static void addDefaultEvents(EventListPanel events) {       //Adds some default events
         Event defaultDeadline = new Deadline("Assignment", LocalDateTime.of(2025, 2, 18, 11, 59));
-        Event defaultMeeting = new Meeting("Class", LocalDateTime.of(2025, 2, 18, 4, 00), LocalDateTime.of(2025, 2, 18, 5, 10), "Zoom");
+        Event defaultMeeting = new Meeting("Class", LocalDateTime.of(2025, 2, 18, 4, 0), LocalDateTime.of(2025, 2, 18, 5, 10), "Zoom");
 
         events.addEvent(defaultDeadline);
         events.addEvent(defaultMeeting);

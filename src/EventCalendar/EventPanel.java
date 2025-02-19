@@ -14,9 +14,12 @@ public class EventPanel extends JPanel {
         eventLabel.setFont(new Font("Serif", Font.BOLD, 14));
 
         completeButton = new JButton("Complete");           //Builds the complete button
-        //completeButton.addActionListener(e -> {
-         //   event.complete();
-       // });
+        completeButton.addActionListener(e -> {
+            if (event instanceof Completable) {
+                ((Completable) event).complete();
+            }
+
+        });
 
         this.setBackground(Color.GREEN);
         this.setPreferredSize(new Dimension(400, 400));

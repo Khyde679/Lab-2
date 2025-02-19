@@ -26,6 +26,7 @@ public class EventListPanel extends JPanel {
         events = new ArrayList<>();
 
         controlPanel = new JPanel();
+        controlPanel.setBackground(Color.YELLOW);
         controlPanel.setPreferredSize(new Dimension(400, 50));
 
         addEventButton = new JButton("Add Event");          //Creates the add event button and redirects to the modal to build a new event
@@ -54,6 +55,9 @@ public class EventListPanel extends JPanel {
 
         filters = new HashMap<>();          //Builds and adds check boxes to filter meetings by
         filterDisplay = new ArrayList<>();
+        for (String sortOption : SORT_OPTIONS) {
+            filterDisplay.add(new JCheckBox(sortOption));
+        }
         for (String filter : filters.keySet()) {
             JCheckBox box = new JCheckBox(filter);
             box.setFont(new Font("Arial", Font.BOLD, 30));
@@ -70,12 +74,11 @@ public class EventListPanel extends JPanel {
 
         displayPanel = new JPanel();        //Displays the events
         displayPanel.setPreferredSize(new Dimension(400, 200));
+        displayPanel.setBackground(Color.RED);
         add(displayPanel);
     }
 
     public void addEvent(Event event) {     //Method to add new events
-        EventPlanner.addDefaultEvents(this);
-
         events.add(event);
         updateDisplay();
     }

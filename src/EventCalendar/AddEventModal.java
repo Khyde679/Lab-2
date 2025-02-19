@@ -87,7 +87,7 @@ public class AddEventModal extends JDialog {
                     newEvent = new Deadline(getInput(attributes.get(0).value), LocalDateTime.parse((CharSequence) attributes.get(1).value));
                     break;
                 }
-                case 1: {       //Case for Metings
+                case 1: {       //Case for Meetings
                     newEvent = new Meeting(getInput(attributes.get(0).value), LocalDateTime.parse((CharSequence) attributes.get(1).value),
                             LocalDateTime.parse((CharSequence) attributes.get(2).value), getInput(attributes.get(3).value));
                     break;
