@@ -2,21 +2,45 @@ package EventCalendar;
 
 import java.time.LocalDateTime;
 
-public class Deadline extends Event implements Completable{
+public class Deadline implements Completable, Event {
+    private String name;
+    private LocalDateTime dateTime;
     private boolean complete;       //Boolean to track if the associated task is complete
 
-    public Deadline(String name, LocalDateTime dateTime) {      //Constructor for the deadline
-        super(name, dateTime);
+
+    public String getName() {
+        return name;
     }
 
+    public LocalDateTime getDateTime(){
+        return dateTime;
+    }
 
     @Override
-    public void complete() {        //Method to set the associated task to complete if it is completed
+    public String getType() {
+        return "";
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    @Override
+    public void complete() {
         complete = true;
     }
 
     @Override
-    public boolean isComplete() {  //Method to check if this specific event is complete or not
+    public boolean isComplete() {
         return complete;
+    }
+
+    @Override
+    public int compareTo(Event e) {
+        return dateTime.compareTo(e.getDateTime());
     }
 }

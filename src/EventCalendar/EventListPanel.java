@@ -76,6 +76,7 @@ public class EventListPanel extends JPanel {
         displayPanel.setPreferredSize(new Dimension(400, 200));
         displayPanel.setBackground(Color.RED);
         add(displayPanel);
+        updateDisplay();
     }
 
     public void addEvent(Event event) {     //Method to add new events

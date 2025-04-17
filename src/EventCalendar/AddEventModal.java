@@ -84,7 +84,8 @@ public class AddEventModal extends JDialog {
             Event newEvent = new Deadline("error", null);
             switch (eventTypeComboBox.getSelectedIndex()) {
                 case 0: {       //Case for Deadlines
-                    newEvent = new Deadline(getInput(attributes.get(0).value), LocalDateTime.parse((CharSequence) attributes.get(1).value));
+                    newEvent =
+                    //newEvent = new Deadline(getInput(attributes.get(0).value), LocalDateTime.parse((CharSequence) attributes.get(1).value));
                     break;
                 }
                 case 1: {       //Case for Meetings

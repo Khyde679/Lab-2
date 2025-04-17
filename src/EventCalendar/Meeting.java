@@ -2,22 +2,13 @@ package EventCalendar;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
 
-public class Meeting extends Event implements Completable{
+public class Meeting implements Completable, Event {
+    private String name;
     private String location;            //Private string to track the location of the meeting
     private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;  //Private variable to track when the meeting is going to end
     private boolean complete;
-
-    public Meeting(String name, LocalDateTime startDateTime, LocalDateTime endDateTime, String location) {
-        super(name, startDateTime);
-        this.startDateTime = startDateTime;
-        this.location = location;
-        this.endDateTime = endDateTime;
-    }
-
 
     LocalDateTime getEndDateTime() {        //Getter for the end of the meeting
         return endDateTime;
@@ -40,12 +31,42 @@ public class Meeting extends Event implements Completable{
     }
 
     @Override
-    public void complete() {        //Completes events
+    public void complete() {
         complete = true;
     }
 
     @Override
-    public boolean isComplete() {       //Checks if events are complete
+    public boolean isComplete() {
         return complete;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public LocalDateTime getDateTime() {
+        return startDateTime;
+    }
+
+    @Override
+    public String getType() {
+        return "";
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void setDateTime(LocalDateTime dateTime) {
+        this.startDateTime = dateTime;
+    }
+
+    @Override
+    public int compareTo(Event e) {
+        return startDateTime.compareTo(e.getDateTime());
     }
 }
