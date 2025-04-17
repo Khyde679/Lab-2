@@ -1,5 +1,6 @@
 package EventCalendar;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class Deadline implements Completable, Event {
@@ -17,8 +18,18 @@ public class Deadline implements Completable, Event {
     }
 
     @Override
-    public String getType() {
+    public LocalDateTime getEndDateTime() {
+        return null;
+    }
+
+    @Override
+    public String getLocation() {
         return "";
+    }
+
+    @Override
+    public Duration getDuration() {
+        return null;
     }
 
     public void setName(String name) {
@@ -27,6 +38,16 @@ public class Deadline implements Completable, Event {
 
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
+    }
+
+    @Override
+    public void setEndDateTime(LocalDateTime endDateTime) {
+
+    }
+
+    @Override
+    public void setLocation(String location) {
+
     }
 
     @Override

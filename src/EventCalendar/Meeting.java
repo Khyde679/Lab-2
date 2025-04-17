@@ -10,23 +10,23 @@ public class Meeting implements Completable, Event {
     private LocalDateTime endDateTime;  //Private variable to track when the meeting is going to end
     private boolean complete;
 
-    LocalDateTime getEndDateTime() {        //Getter for the end of the meeting
+    public LocalDateTime getEndDateTime() {        //Getter for the end of the meeting
         return endDateTime;
     }
 
-    Duration getDuration() {                                 //Getter for the duration of the meeting, calculated by subtracting the
+    public Duration getDuration() {                                 //Getter for the duration of the meeting, calculated by subtracting the
         return Duration.between(startDateTime, endDateTime);
     }
 
-    String getLocation() {      //Getter for the location of the meeting
+    public String getLocation() {      //Getter for the location of the meeting
         return location;
     }
 
-    void setEndDateTime(LocalDateTime end) {     //Setter for the end time of the meeting
+    public void setEndDateTime(LocalDateTime end) {     //Setter for the end time of the meeting
         endDateTime = end;
     }
 
-    void setLocation(String location) {     //Setter for the location of the meeting
+    public void setLocation(String location) {     //Setter for the location of the meeting
         this.location = location;
     }
 
@@ -48,11 +48,6 @@ public class Meeting implements Completable, Event {
     @Override
     public LocalDateTime getDateTime() {
         return startDateTime;
-    }
-
-    @Override
-    public String getType() {
-        return "";
     }
 
     @Override
