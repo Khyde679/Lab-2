@@ -3,6 +3,7 @@ package EventCalendar;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
+/*Concrete product for Event interface*/
 public class Deadline implements Completable, Event {
     private String name;
     private LocalDateTime dateTime;

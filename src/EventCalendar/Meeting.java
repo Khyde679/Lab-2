@@ -3,14 +3,16 @@ package EventCalendar;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
+/*Concrete product for Event interface*/
 public class Meeting implements Completable, Event {
     private String name;
-    private String location;            //Private string to track the location of the meeting
+    private String location;
     private LocalDateTime startDateTime;
-    private LocalDateTime endDateTime;  //Private variable to track when the meeting is going to end
+    private LocalDateTime endDateTime;
     private boolean complete;
 
-    public LocalDateTime getEndDateTime() {        //Getter for the end of the meeting
+    @Override
+    public LocalDateTime getEndDateTime() {
         return endDateTime;
     }
 
