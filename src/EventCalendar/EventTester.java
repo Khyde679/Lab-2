@@ -10,9 +10,9 @@ public class EventTester {
     static LocalDateTime deadline = LocalDateTime.of(2024, 12, 7, 17, 0);
     static String lastDeadlineName = "Last Deadline";
     static String lastDeadlineNameAlt = "Final Deadline";
-    static Event lastDeadline = new DeadlineFactory().createEvent(lastDeadlineName, deadline, null, null);
-    static Event midDeadline = new DeadlineFactory().createEvent("Mid Deadline", deadline.minusDays(10), null, null);
-    static Event firstDeadline = new DeadlineFactory().createEvent("First Deadline", deadline.minusDays(20), null, null);
+    static Deadline lastDeadline = (Deadline) new DeadlineFactory().createEvent(lastDeadlineName, deadline, null, null);
+    static Deadline midDeadline = (Deadline) new DeadlineFactory().createEvent("Mid Deadline", deadline.minusDays(10), null, null);
+    static Deadline firstDeadline = (Deadline) new DeadlineFactory().createEvent("First Deadline", deadline.minusDays(20), null, null);
     static final int INCREMENT = 1;
 
     static LocalDateTime start = LocalDateTime.of(2024, 10, 7, 15, 0);
@@ -20,9 +20,9 @@ public class EventTester {
     static String location = "MCS 321";
     static String locationAlt =  "MCS 339";
 
-    static Event firstMeeting = new MeetingFactory().createEvent("First Meeting", start, end, location);
-    static Event lastMeeting = new MeetingFactory().createEvent("Last Meeting", start.plusDays(4), end.plusDays(4), location);
-    static Event midMeeting = new MeetingFactory().createEvent("Middle Meeting", start.plusDays(2), end.plusDays(2), location);
+    static Meeting firstMeeting = (Meeting) new MeetingFactory().createEvent("First Meeting", start, end, location);
+    static Meeting lastMeeting = (Meeting) new MeetingFactory().createEvent("Last Meeting", start.plusDays(4), end.plusDays(4), location);
+    static Meeting midMeeting = (Meeting) new MeetingFactory().createEvent("Middle Meeting", start.plusDays(2), end.plusDays(2), location);
 
     static Event[] events = new Event[] {
             midDeadline,
@@ -33,13 +33,13 @@ public class EventTester {
             midMeeting,
     };
 
-    static Event[] deadlines = new Event[] {
+    static Deadline[] deadlines = new Deadline[] {
             firstDeadline,
             midDeadline,
             lastDeadline,
     };
 
-    static Event[] meetings = new Event[] {
+    static Meeting[] meetings = new Meeting[] {
             firstMeeting,
             midMeeting,
             lastMeeting,
@@ -108,19 +108,19 @@ public class EventTester {
 
     public static boolean testCompletable() {
         // complete all the deadlines
-        for (Event deadline : deadlines) {
+        for (Deadline deadline : deadlines) {
             deadline.complete();
         }
         // complete all the meetings
-        for (Event meeting : meetings) {
+        for (Meeting meeting : meetings) {
             meeting.complete();
         }
         // check that the deadlines are complete
         boolean deadlinesPass = Stream.of(deadlines)
-                .allMatch(Event::isComplete);
+                .allMatch(Deadline::isComplete);
         // check that the meetings are complete
         boolean meetingsPass = Stream.of(meetings)
-                .allMatch(Event::isComplete);
+                .allMatch(Meeting::isComplete);
         // return results
         return deadlinesPass && meetingsPass;
     }
