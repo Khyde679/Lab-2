@@ -18,6 +18,11 @@ public class Meeting implements Completable, Event {
         return Duration.between(startDateTime, endDateTime);
     }
 
+    @Override
+    public String getType() {
+        return "Meeting";
+    }
+
     public String getLocation() {      //Getter for the location of the meeting
         return location;
     }

@@ -4,10 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Predicate;
 
 public class EventListPanel extends JPanel {
@@ -22,12 +19,12 @@ public class EventListPanel extends JPanel {
 
     EventListPanel() {          //Constructor for the EventListPanel
         setPreferredSize(new Dimension(500, 500));
-        setBackground(Color.GREEN);
+        setBackground(Color.DARK_GRAY);
         events = new ArrayList<>();
 
         controlPanel = new JPanel();
-        controlPanel.setBackground(Color.YELLOW);
-        controlPanel.setPreferredSize(new Dimension(400, 50));
+        controlPanel.setBackground(Color.LIGHT_GRAY);
+        controlPanel.setPreferredSize(new Dimension(400, 57));
 
         addEventButton = new JButton("Add Event");          //Creates the add event button and redirects to the modal to build a new event
         addEventButton.addActionListener(e -> {
@@ -39,13 +36,13 @@ public class EventListPanel extends JPanel {
         sortDropDown = new JComboBox<>(SORT_OPTIONS);               //Builds the drop-down menu to sort the events
         sortDropDown.setFont(new Font("Arial", Font.BOLD, 30));
         sortDropDown.addActionListener(e -> {
-            if (sortDropDown.getSelectedItem().equals(SORT_OPTIONS[0])) {
+            if (Objects.equals(sortDropDown.getSelectedItem(), SORT_OPTIONS[0])) {
                 Collections.sort(events);
             }
-            if (sortDropDown.getSelectedItem().equals(SORT_OPTIONS[1])) {
+            if (Objects.equals(sortDropDown.getSelectedItem(), SORT_OPTIONS[1])) {
                 Collections.sort(events);
             }
-            if (sortDropDown.getSelectedItem().equals(SORT_OPTIONS[2])) {
+            if (Objects.equals(sortDropDown.getSelectedItem(), SORT_OPTIONS[2])) {
                 events.sort((a1, a2) -> a1.getName().compareToIgnoreCase(a2.getName()) * -1);
             }
 
@@ -72,9 +69,7 @@ public class EventListPanel extends JPanel {
 
         add(controlPanel);
 
-        displayPanel = new JPanel();        //Displays the events
-        displayPanel.setPreferredSize(new Dimension(400, 200));
-        displayPanel.setBackground(Color.RED);
+        displayPanel = new EventPanel(events);
         add(displayPanel);
         updateDisplay();
     }
@@ -103,7 +98,7 @@ public class EventListPanel extends JPanel {
         displayPanel.removeAll();
         for (Event event : events) {
             if (!isFiltered(event)) {
-                displayPanel.add(new EventPanel(event));
+                displayPanel.add(new EventPanel(event, events));
             }
         }
 

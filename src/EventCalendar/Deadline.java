@@ -32,6 +32,11 @@ public class Deadline implements Completable, Event {
         return null;
     }
 
+    @Override
+    public String getType() {
+        return "Deadline";
+    }
+
     public void setName(String name) {
         this.name = name;
     }

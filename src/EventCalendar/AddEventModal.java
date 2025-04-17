@@ -33,7 +33,7 @@ public class AddEventModal extends JDialog {
 
         inputPanel = new JPanel();
         inputPanel.setPreferredSize(new Dimension(600, 400));
-        inputPanel.setBackground(Color.BLUE);
+        inputPanel.setBackground(Color.LIGHT_GRAY);
 
         eventTypeComboBox = new JComboBox<>(eventTypes);            //Stores the possible types of events
         eventTypeComboBox.addActionListener(getEventChooser());     //Allows you to choose between the types of events to create
@@ -57,13 +57,13 @@ public class AddEventModal extends JDialog {
             switch (eventTypeComboBox.getSelectedIndex()) {     //Case for Deadlines
                 case 0: {
                     attributes.add(new Attribute ("Name", new JTextField(10)));
-                    attributes.add(new Attribute ("Date and Time", new JTextField(10)));
+                    attributes.add(new Attribute ("Date and Time (YYYY-MM-DDTHH:MM)", new JTextField(10)));
                     break;
                 }
                 case 1: {       //Case for meetings
                     attributes.add(new Attribute ("Name", new JTextField(10)));
-                    attributes.add(new Attribute ("Start Date and Time", new JTextField(10)));
-                    attributes.add(new Attribute ("End Date and Time", new JTextField(10)));
+                    attributes.add(new Attribute ("Start Date and Time (YYYY-MM-DDTHH:MM)", new JTextField(10)));
+                    attributes.add(new Attribute ("End Date and Time (YYYY-MM-DDTHH:MM)", new JTextField(10)));
                     attributes.add(new Attribute ("Location", new JTextField(10)));
                     break;
                 }
@@ -85,14 +85,14 @@ public class AddEventModal extends JDialog {
             switch (eventTypeComboBox.getSelectedIndex()) {
                 case 0: {       //Case for Deadlines
                     DeadlineFactory newFactory = new DeadlineFactory();
-                    newEvent = newFactory.createEvent(getInput(attributes.get(0).value), LocalDateTime.parse((CharSequence) attributes.get(1).value), null, null);
+                    newEvent = newFactory.createEvent(getInput(attributes.get(0).value), LocalDateTime.parse(getInput(attributes.get(1).value)), null, null);
                     //newEvent = new Deadline(getInput(attributes.get(0).value), LocalDateTime.parse((CharSequence) attributes.get(1).value));
                     break;
                 }
                 case 1: {       //Case for Meetings
                     MeetingFactory newFactory = new MeetingFactory();
-                    newEvent = newFactory.createEvent(getInput(attributes.get(0).value), LocalDateTime.parse((CharSequence) attributes.get(1).value),
-                            LocalDateTime.parse((CharSequence) attributes.get(2).value), getInput(attributes.get(3).value));
+                    newEvent = newFactory.createEvent(getInput(attributes.get(0).value), LocalDateTime.parse(getInput(attributes.get(1).value)),
+                            LocalDateTime.parse(getInput(attributes.get(2).value)), getInput(attributes.get(3).value));
                     //newEvent = new Meeting(getInput(attributes.get(0).value), LocalDateTime.parse((CharSequence) attributes.get(1).value),
                             //LocalDateTime.parse((CharSequence) attributes.get(2).value), getInput(attributes.get(3).value));
                     break;
