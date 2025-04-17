@@ -85,16 +85,13 @@ public class AddEventModal extends JDialog {
             switch (eventTypeComboBox.getSelectedIndex()) {
                 case 0: {       //Case for Deadlines
                     DeadlineFactory newFactory = new DeadlineFactory();
-                    newEvent = newFactory.createEvent(getInput(attributes.get(0).value), LocalDateTime.parse(getInput(attributes.get(1).value)), null, null);
-                    //newEvent = new Deadline(getInput(attributes.get(0).value), LocalDateTime.parse((CharSequence) attributes.get(1).value));
+                    newEvent = newFactory.getEvent(getInput(attributes.get(0).value), LocalDateTime.parse(getInput(attributes.get(1).value)), null, null);
                     break;
                 }
                 case 1: {       //Case for Meetings
                     MeetingFactory newFactory = new MeetingFactory();
-                    newEvent = newFactory.createEvent(getInput(attributes.get(0).value), LocalDateTime.parse(getInput(attributes.get(1).value)),
+                    newEvent = newFactory.getEvent(getInput(attributes.get(0).value), LocalDateTime.parse(getInput(attributes.get(1).value)),
                             LocalDateTime.parse(getInput(attributes.get(2).value)), getInput(attributes.get(3).value));
-                    //newEvent = new Meeting(getInput(attributes.get(0).value), LocalDateTime.parse((CharSequence) attributes.get(1).value),
-                            //LocalDateTime.parse((CharSequence) attributes.get(2).value), getInput(attributes.get(3).value));
                     break;
                 }
             }

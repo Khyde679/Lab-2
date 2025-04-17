@@ -58,12 +58,7 @@ public class EventListPanel extends JPanel {
         for (String filter : filters.keySet()) {
             JCheckBox box = new JCheckBox(filter);
             box.setFont(new Font("Arial", Font.BOLD, 30));
-            box.addItemListener(new ItemListener() {
-                @Override
-                public void itemStateChanged(ItemEvent e) {
-                    updateDisplay();
-                }
-            });
+            box.addItemListener(e -> updateDisplay());
             filterDisplay.add(box);
         }
 
