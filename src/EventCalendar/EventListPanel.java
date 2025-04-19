@@ -6,6 +6,7 @@ import java.util.*;
 import java.util.function.Predicate;
 
 public class EventListPanel extends JPanel {
+    EventContext eventContext;
     ArrayList<Event> events;
     DisplayStrategy displayStrategy;
     JPanel controlPanel;
@@ -19,7 +20,7 @@ public class EventListPanel extends JPanel {
     final String[] DISPLAY_OPTIONS = {"LIST"};
 
     EventListPanel() {          //Constructor for the EventListPanel
-        setPreferredSize(new Dimension(500, 500));
+        setPreferredSize(new Dimension(1000, 750));
         setBackground(Color.DARK_GRAY);
         events = new ArrayList<>();
 
@@ -51,13 +52,16 @@ public class EventListPanel extends JPanel {
         });
         controlPanel.add(sortDropDown);
 
+        eventContext = new EventContext();
         displayStyle = new JComboBox<>(DISPLAY_OPTIONS);
         displayStyle.setFont(new Font("Arial", Font.BOLD, 30));
         displayStyle.addActionListener(e -> {
             if (Objects.equals(displayStyle.getSelectedItem(), DISPLAY_OPTIONS[0])) {
                 displayStrategy = new ListDisplay();
+                displayPanel = eventContext.selectDisplay(displayStrategy, events);
             }
         });
+        displayStyle.setSelectedIndex(0);
         controlPanel.add(displayStyle);
 
 
@@ -73,10 +77,8 @@ public class EventListPanel extends JPanel {
             filterDisplay.add(box);
         }
 
-
         add(controlPanel);
 
-        displayPanel = new EventPanel(events);
         add(displayPanel);
         updateDisplay();
     }
@@ -105,7 +107,7 @@ public class EventListPanel extends JPanel {
         displayPanel.removeAll();
         for (Event event : events) {
             if (!isFiltered(event)) {
-                //displayPanel.add(new EventPanel(event, events));
+                displayPanel.add(new EventContext().selectDisplay(displayStrategy, events));
             }
         }
 

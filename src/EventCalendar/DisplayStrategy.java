@@ -1,7 +1,8 @@
 package EventCalendar;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public interface DisplayStrategy {
-    void displayEvents(ArrayList<Event> events);
+    Component displayEvents(ArrayList<Event> events);
 }
