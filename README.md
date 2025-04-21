@@ -1,0 +1,2 @@
+I am planning on implementing the Factory and Strategy patterns. The hope is to streamline the process of creating events, and allowing for multiple display types. I implemented these changes by altering how events are constructed, by creating the two concrete factory classes
+that call the constructors in the Meeting and Deadline classes. The Strategy pattern was implemented by changing the EventPanel class to the EventContext class, which then invoked ListDisplay based on the choice from a dropdown menu in EventListPanel.
